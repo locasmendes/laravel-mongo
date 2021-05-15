@@ -41,6 +41,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN pecl install mongodb
+RUN echo "extension=mongodb.so" > /etc/php/8.0/cli/php.ini
 RUN pecl channel-update https://pecl.php.net/channel.xml \
     && pecl install swoole
 
